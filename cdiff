@@ -1,0 +1,41 @@
+#!/bin/bash
+
+while getopts d:f:h OPT
+do
+  case $OPT in
+    "d" ) FLG_D="TRUE" ; VALUE_D="$OPTARG";;
+    "f" ) FLG_F="TRUE" ; VALUE_F="$OPTARG";;
+    "h" ) FLG_H="TRUE" ;;
+  esac
+done
+
+if [ "$FLG_H" = "TRUE" ]; then
+  echo "Usage: cdiff -d DELIMITER -f #FIELD file1 file2"
+  echo 'Example: cdiff -d "," -f 2 a.txt b.txt'
+  exit 0
+fi
+
+if [ "$FLG_D" = "FALSE" ]; then
+  VALUE_D=","
+fi
+
+if [ "$FLG_F" = "FALSE" ]; then
+  echo "You must specify column to compare by -f option"
+  echo "for more details, use -h option"
+  exit 0
+fi
+
+shift `expr $OPTIND - 1`
+
+tmp1=$(mktemp)
+tmp2=$(mktemp)
+
+cut -d $VALUE_D -f $VALUE_F $1 > $tmp1
+cut -d $VALUE_D -f $VALUE_F $2 > $tmp2
+
+diff $tmp1 $tmp2
+
+rm $tmp1
+rm $tmp2
+
+exit 0
