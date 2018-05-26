@@ -1,6 +1,6 @@
 # cdiff
-Column-selected DIFF - diff tool that compares specified column(s)
-simple script that use `cut` and `diff`. with `$(mktemp)` scheme.
+Column-selected DIFF - diff tool that compares specified column(s).
+`cdiff` is a simple script that use `cut` and `diff`, with `$(mktemp)` scheme.
 
 ## use like this:
 `cdiff -d "," -f 1,3 file1.csv file2.csv`
