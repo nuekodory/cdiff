@@ -10,7 +10,7 @@ put cdiff file to /usr/local/bin/ or alike.
 ```
 git clone https://github.com/nuekodory/cdiff.git
 cd cdiff
-sudo cp cdiff /usr/local/bin
+sudo cp cdiff /usr/local/bin/
 sudo chmod 755 /usr/local/bin/cdiff
 ```
 make sure you change permission to executable
