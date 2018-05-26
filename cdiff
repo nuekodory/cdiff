@@ -6,6 +6,7 @@ do
     "d" ) FLG_D="TRUE" ; VALUE_D="$OPTARG";;
     "f" ) FLG_F="TRUE" ; VALUE_F="$OPTARG";;
     "h" ) FLG_H="TRUE" ;;
+     *  ) FLG_H="TRUE" ;;
   esac
 done
 
