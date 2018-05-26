@@ -15,17 +15,22 @@ if [ "$FLG_H" = "TRUE" ]; then
   exit 0
 fi
 
-if [ "$FLG_D" = "FALSE" ]; then
+if [ "$FLG_D" = "" ]; then
   VALUE_D=","
 fi
 
-if [ "$FLG_F" = "FALSE" ]; then
+if [ "$FLG_F" = "" ]; then
   echo "You must specify column to compare by -f option"
   echo "for more details, use -h option"
   exit 0
 fi
 
 shift `expr $OPTIND - 1`
+
+if [ "$2" = "" ]; then
+  echo "You must give 2 files."
+  exit 0
+fi
 
 tmp1=$(mktemp)
 tmp2=$(mktemp)
